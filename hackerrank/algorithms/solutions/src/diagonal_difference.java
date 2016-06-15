@@ -1,8 +1,14 @@
 import java.util.*;
 
-public class diagonal_difference {
 
-    public static void main(String[] args) {
+
+public class Diagonal_difference {
+
+    /**
+     *
+     * @param args
+     */
+    public static void main(String[] args){
         Scanner sc=new Scanner(System.in);
         int RowCounter=sc.nextInt();
         int firstDiagonal=0;
