@@ -1,44 +1,34 @@
 <?php
 
-$handle = fopen ("php://stdin", "r");
-function migratoryBirds($n, $ar) {
-    // Complete this function
-    //** asked some things in modifications
-    $maxCount = 0;
-    $k=0;
-    $element = null;
-    $a = array();
-    for($i=0;$i<$n;++$i)
-    {
-        $count = 0;
-        
-        for($j=0;$j<$n;++$j){
-            if($ar[$j]==$ar[$i]){
-                
-                ++$count;
-                $element = $ar[$j];
-            }
-        }
-        if($count==$maxCount){
-             if($element<$a[$k]){
-                $a[$k] = $element;
-            }
-        }
-        elseif($count>$maxCount){
-            $maxCount = $count;
-            $a[$k]=$element;
-        }
-        
+// Complete the migratoryBirds function below.
+function migratoryBirds($arr) {
+    $birds = array();
+    $sortedKeys = array();
+    $max = 0;
+    for($i=0;$i<count($arr);++$i){
+        $birds[$arr[$i]] = (!empty($birds[$arr[$i]]) ? $birds[$arr[$i]] : 0 ) + 1;
+    }
+    $max = max($birds);
+    foreach($birds as $key => $val){
+        if($max==$val) array_push($sortedKeys,$key);    
     }
     
-    return $a[$k];
+    sort($sortedKeys);
+    
+   return $sortedKeys[0];
 }
 
-fscanf($handle, "%i",$n);
-$ar_temp = fgets($handle);
-$ar = explode(" ",$ar_temp);
-$ar = array_map('intval', $ar);
-$result = migratoryBirds($n, $ar);
-echo $result . "\n";
+$fptr = fopen(getenv("OUTPUT_PATH"), "w");
 
+$arr_count = intval(trim(fgets(STDIN)));
+
+$arr_temp = rtrim(fgets(STDIN));
+
+$arr = array_map('intval', preg_split('/ /', $arr_temp, -1, PREG_SPLIT_NO_EMPTY));
+
+$result = migratoryBirds($arr);
+
+fwrite($fptr, $result . "\n");
+
+fclose($fptr);
 ?>
