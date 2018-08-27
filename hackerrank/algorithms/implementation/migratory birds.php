@@ -3,6 +3,7 @@
 $handle = fopen ("php://stdin", "r");
 function migratoryBirds($n, $ar) {
     // Complete this function
+    //** asked some things in modifications
     $maxCount = 0;
     $k=0;
     $element = null;
