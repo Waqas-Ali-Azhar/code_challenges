@@ -1,6 +1,7 @@
 <?php
 
 // Complete the migratoryBirds function below.
+# https://www.hackerrank.com/challenges/migratory-birds/problem
 function migratoryBirds($arr) {
     $birds = array();
     $sortedKeys = array();
