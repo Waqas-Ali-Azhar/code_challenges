@@ -6,54 +6,43 @@
 // https://leetcode.com/problems/longest-common-prefix/description/
 
 var longestCommonPrefix = function(strs) {
+    if(!strs[0]){
+        return "";
+    }
     
-    var prefix = '';
+    var prefix = strs[0].split("");
+    var match = 0;
+    var newarr = new Array();
+    
     
     for(var i=0; i<strs.length; ++i){
-        
-        var prefix = strs[i].split("").join();
-        
-        
-        if(strs[i+1]){
-           
-            
-            prefix = '';
-            var nextWord = strs[i+1].split(""); 
-            for(var x=0; x<word.length;++x ){
-                if(word[x]==nextWord[x]){
-                    prefix += word[x];
-                    
-                }        
-                else{
-                    if(prefix==''){
-                        prefix = strs[i];
-                    }
-                    break;
+        match = 0;
+
+        var word = strs[i].split("");
+
+        for(var x=0; x<prefix.length; ++x){
+            if(prefix[x]==word[x]){
+                if(x>0 && match==0){
+                    return "";
                 }
-            }
-        }
-        else{
-            if(prefix){
+                ++match;
                 
-                var nextWord = prefix.split("");
-                prefix = '';
-                for(var x=0; x<word.length;++x ){
-
-                    if(word[x]==nextWord[x]){
-
-                        prefix += word[x];
-                    }        
-                    else{
-                        return prefix;
-                    }
-                }    
             }
             else{
-                return word.join("");        
+                if(match<1){
+                    return "";
+                    
+                }
+                else{
+                    prefix[x] = '';
+                    
+                }
+                    
+                
             }
         }
         
-    }
-    return prefix;
+    }  
+    return prefix.join("");
 
 };
