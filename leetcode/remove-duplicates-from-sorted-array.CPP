@@ -10,22 +10,19 @@ public:
         else if(nums.size()==1){
             return 1;
         }
-        int index = 0;
-        vector<int> vec;
-        for(auto i= nums.begin(); i < nums.end(); ++i){
-            index = i-nums.begin();
-            
-            if(index>0){
-                cout<<index;
-                if(nums.at(*i-1)!=nums.at(*i)){
-                    vec.push_back(nums.at(*i));
-                }
-                continue;
+        int length = nums.size();
+            for(int i=1;i<length;++i){
+
+                   if(nums[i-1]==nums[i]){
+                       nums.erase(nums.begin()+i);
+                       --i;
+                       --length;
+                   }     
+
+
             }
-            vec.push_back(nums.at(*i));    
-            
-        }
-        nums = vec;
-        return vec.end()-vec.begin();
+        
+        
+        return length;
     }
 };
