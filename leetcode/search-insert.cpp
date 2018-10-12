@@ -16,7 +16,7 @@ public:
     }
 };
 
-/* with Binary search */
+//With Binary Search
 class Solution {
 public:
     int searchInsert(vector<int>& nums, int target) {
