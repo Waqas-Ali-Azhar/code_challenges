@@ -2,57 +2,40 @@
 class Solution {
 public:
     string longestPalindrome(string s) {
-        std::string max_string = "";
+        std::string max_string=s.substr(0,1);
+        std::string str = "";
+        int start=-1; int end=-1;
         
-        if(s.length()>0){
-
-            vector<string> dec(1000,""); 
-            std::string str1;
-            std::string str2;
+        
+        for(int i=0; i<s.length(); ++i){
+            
+            start =i; end =i;
+            while((start >= 0 && end <s.length()) && (s[start] == s[end])){
+                --start;
+                ++end;
+           }
+            str = "";
+            str = s.substr(start+1,end-start-1);
+            max_string = max_string.length() > str.length() ? max_string : str;
             
             
-            for(int i=0; i<s.length(); ++i){
-                
-                if(i>0){
-                    if(s[i] ==s[i+1]){
-                        while(s[i] == s[i+1] && i < s.length()){
-                        
-                            str1+=s[i];
-                            ++i;
-                        }
-                        if(s[i]==s[i-1])
-                            str1+=s[i];
-                        
-                        max_string = max_string.length() > str1.length() ? max_string: str1;
-                        
-                    }
-                    else{
-                        int j = i-1;
-                        int k = i+1;
-                        if(s[j]==s[k]){
-                            while( (j>0 && k < s.length()) && (s[j]==s[k]) ){
-                                --j;
-                                ++k;
-                            }
-                            str2 = s.substr(j,k-j+1);
-                            i = k;
-                            dec[i] = str2;
-                            
-                        }
-                        
-                    }
-                     
-                max_string = max_string.length() > str2.length() ? max_string: str2;
-                    str1  = "";
-                    str2  = "";
-                    
-                }
-                
+            start = i; end = i+1;
+            while((start >= 0 && end < s.length()) && (s[start] == s[end])){
+                --start;
+                ++end;
             }
+            str = "";
+            str = s.substr(start+1,end-start-1);
+            max_string = max_string.length() > str.length() ? max_string : str;
+            
+            
             
         }
-    
+        
         return max_string;
         
     }
+    
+    
+    
 };
