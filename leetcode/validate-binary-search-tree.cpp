@@ -7,8 +7,9 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
- 
+
  //https://leetcode.com/problems/validate-binary-search-tree/
+
 
 class Solution {
 public:
