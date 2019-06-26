@@ -15,7 +15,7 @@ public:
     
     /** Initialize your data structure here. */
     MyLinkedList() {
-       head->next = NULL;
+       head = NULL;
     }
 
    
@@ -97,7 +97,7 @@ public:
             }
     }
     
-     void  print(int val){
+     void  printList(){
         
         Node *ptr;
         ptr = head;
@@ -123,13 +123,7 @@ public:
         
     
 
-    // void printList(int x){
-    //     Node *ptr = head;
-    //     while(ptr->next != NULL){
-    //         cout<<"->"<<ptr->val;
-    //         ptr = ptr->next;
-    //     }
-    // }
+    
 };
 
 /**
